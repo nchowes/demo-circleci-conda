@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: continuumio/miniconda3
+    steps:
+      - checkout
+      - run:
+          command: |
+            conda env create -f environment.yml
+      - run:
+          name: Running tests
+          command: |
+            source activate circle-ci
+            python tests.py
+      - store_artifacts:
+          path: test-reports/
+          destination: python_app
