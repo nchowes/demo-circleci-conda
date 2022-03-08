@@ -4,4 +4,4 @@ with app.test_client() as c:
     assert response.data == b'Hello World!'
     assert response.status_code == 200
 
-print("Success")
+print("We'll use this text to prototype the artifacts...")

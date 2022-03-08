@@ -6,13 +6,14 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Create conda environment
           command: |
             conda env create -f environment.yml
       - run:
           name: Running tests
           command: |
             source activate circle-ci
-            python tests.py
+            python tests.py > artifact.txt
       - store_artifacts:
-          path: test-reports/
-          destination: python_app
+          path: artifact.txt
+          destination: demo-circleci-conda
